@@ -1,10 +1,10 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 
-interface HeroProps {
-  onSearchClick: () => void;
-}
+export function Hero() {
+  const scrollToProducts = () => {
+    document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-export function Hero({ onSearchClick }: HeroProps) {
   return (
     <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -26,7 +26,7 @@ export function Hero({ onSearchClick }: HeroProps) {
           Conecte-se com produtores locais e descubra produtos sazonais e receitas autênticas
         </p>
         <button
-          onClick={onSearchClick}
+          onClick={scrollToProducts}
           className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-colors shadow-lg"
         >
           Explorar Produtos

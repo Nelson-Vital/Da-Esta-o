@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, ShoppingBag } from 'lucide-react';
+import { MapPin, ShoppingBag, Search } from 'lucide-react';
 import { products, type Season } from '@/app/data/mockData';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 
@@ -13,25 +13,56 @@ const seasons: { value: Season; label: string }[] = [
 export function SeasonalProducts() {
   const [selectedSeason, setSelectedSeason] = useState<Season>('primavera');
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = ['Todos', 'Vegetais', 'Frutas'];
 
   const filteredProducts = products.filter(product => {
     const matchesSeason = product.season.includes(selectedSeason);
     const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
-    return matchesSeason && matchesCategory;
+    const matchesSearch = searchQuery === '' || 
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesSeason && matchesCategory && matchesSearch;
   });
 
   return (
     <section id="produtos" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
             Produtos da Estação
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Descubra os melhores produtos frescos e locais para cada época do ano
           </p>
+        </div>
+
+        {/* Contextual Search for Products */}
+        <div className="max-w-2xl mx-auto mb-8">
+          <label htmlFor="product-search" className="block text-sm font-medium text-gray-700 mb-2">
+            Pesquisar produtos
+          </label>
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
+            <input
+              id="product-search"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Ex: tomate, alface, morango..."
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                aria-label="Limpar pesquisa"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Season Filter */}
@@ -83,7 +114,9 @@ export function SeasonalProducts() {
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
-                 
+                <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-medium text-green-700">
+                  {product.price}
+                </div>
               </div>
               <div className="p-5">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
@@ -93,7 +126,10 @@ export function SeasonalProducts() {
                     <MapPin className="size-4" />
                     <span>{product.producer}</span>
                   </div>
-                  
+                  <button className="flex items-center gap-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors text-sm">
+                    <ShoppingBag className="size-4" />
+                    <span>Encomendar</span>
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,11 +1,7 @@
-import { Search, Leaf, Menu, X } from 'lucide-react';
+import { Leaf, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
-interface HeaderProps {
-  onSearchClick: () => void;
-}
-
-export function Header({ onSearchClick }: HeaderProps) {
+export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -32,13 +28,6 @@ export function Header({ onSearchClick }: HeaderProps) {
             <a href="#sobre" className="text-gray-700 hover:text-green-600 transition-colors">
               Sobre
             </a>
-            <button
-              onClick={onSearchClick}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              aria-label="Pesquisar"
-            >
-              <Search className="size-5 text-gray-700" />
-            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -87,16 +76,6 @@ export function Header({ onSearchClick }: HeaderProps) {
               >
                 Sobre
               </a>
-              <button
-                onClick={() => {
-                  onSearchClick();
-                  setMenuOpen(false);
-                }}
-                className="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors py-2"
-              >
-                <Search className="size-5" />
-                <span>Pesquisar</span>
-              </button>
             </div>
           </nav>
         )}
