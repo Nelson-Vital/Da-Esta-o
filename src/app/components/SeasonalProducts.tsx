@@ -83,9 +83,7 @@ export function SeasonalProducts() {
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-medium text-green-700">
-                  {product.price}
-                </div>
+                 
               </div>
               <div className="p-5">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
@@ -95,10 +93,7 @@ export function SeasonalProducts() {
                     <MapPin className="size-4" />
                     <span>{product.producer}</span>
                   </div>
-                  <button className="flex items-center gap-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors text-sm">
-                    <ShoppingBag className="size-4" />
-                    <span>Encomendar</span>
-                  </button>
+                  
                 </div>
               </div>
             </div>
