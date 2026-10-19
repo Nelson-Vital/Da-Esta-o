@@ -2,7 +2,7 @@
 
 Marketplace de produtos locais e da época, pensado para pequenos e médios produtores. Os visitantes descobrem os produtos de cada estação, conhecem os produtores da zona, comparam preços e encontram receitas com o que está na época.
 
-🔗 **Site ao vivo:** https://strong-conkies-a61be2.netlify.app
+🔗 **Site ao vivo:** https://da-estacao.netlify.app
 
 ## Tecnologias
 

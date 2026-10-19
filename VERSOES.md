@@ -7,7 +7,7 @@ Cada versão está guardada num branch próprio, com o código completo dessa al
 | v1.0 | `versao/v1.0` | jan 2026 | Local Food Discovery Platform | Não publicada |
 | v1.1 | `versao/v1.1` | 9 fev 2026 | Mercado Local | mercadov1.netlify.app |
 | v2.0 | `versao/v2.0` | fev 2026 | Discovery Platform | Não publicada |
-| **v3.0** | `versao/v3.0` / `main` | fev 2026 | **Da Estação** | mercadov2.netlify.app e strong-conkies-a61be2.netlify.app |
+| **v3.0** | `versao/v3.0` / `main` | fev 2026 | **Da Estação** | mercadov2.netlify.app e da-estacao.netlify.app |
 
 ## v3.0 — Da Estação (versão final)
 
